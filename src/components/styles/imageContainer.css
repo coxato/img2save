@@ -1,0 +1,31 @@
+.image-container{
+    position: relative;
+}
+
+    .image-container img{
+        width: 100%;
+    }
+
+.overlay-image{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: .3s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+        .image-container:hover .overlay-image{
+            visibility: visible;
+            opacity: 1;
+        }
+
+.credits{
+    color: rgb(230, 230, 230);
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+}

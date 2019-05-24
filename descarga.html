@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>-->
+</head>
+<body>
+    <h1>pixabay api test</h1>
+    <div id="container"></div>
+
+
+    <script>
+    /* 
+    $('a[download]').each(function() {
+      var $a = $(this);
+      var fileUrl = $a.attr('href');
+      //console.log('esto es $a con this  ',$a);
+      //console.log('esto es fileurl de $a  ',fileUrl);  
+      $a.attr('href', 'data:application/octet-stream,' + encodeURIComponent(fileUrl));
+      //console.log('esto es la url de $a ya transformada  ', $a.attr('href'))
+  });
+*/
+const pixabayKey = "12520812-7a40d4649cbc40da8e7856f3c";
+const BASE_URL = "https://pixabay.com/api/?key=";
+const container = document.getElementById('container');
+
+async function traerData(keywords,page = 1 , per_page = 10){
+  try {
+    
+    let response = await fetch(`${BASE_URL}${pixabayKey}&q=${encodeURIComponent(keywords)}&page=${page}&per_page=${per_page}`);
+    let json = await response.json();
+    return json;
+  
+  } catch (error) {
+    console.log(error)
+  }   
+}
+
+
+
+    </script>
+
+</body>
+</html>
