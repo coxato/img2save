@@ -1,0 +1,96 @@
+.title-page-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.52);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info-title-page{
+    width: 80%;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+        .info-title-page h1{
+            margin: 0;
+        }
+    
+
+/*typewritter span*/
+#spanText{
+    font-weight: bold;
+    font-style: italic;
+    margin-right: -7px;
+}
+
+#lineEditor{
+    color: rgb(173, 173, 173);
+    font-size: 45px; 
+    font-weight: 300;
+    margin-right: -10px;
+    animation: lineEditor .5s linear infinite;
+}
+
+@keyframes lineEditor{
+    from{
+        opacity: 1;
+    }to{
+        opacity: 0;
+    }
+}
+
+/*button*/
+.searchButton{
+    font-family: Georgia;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    border: 3px solid white;
+    color: white;
+    position: relative;
+    margin-top: 50px;
+    overflow: hidden;
+    cursor: pointer;
+    will-change: border;
+}
+    .searchButton p{
+        transition: .7s;
+        z-index: 10;
+        margin: 0;
+    }
+    .overlay-searchButton{
+        position: absolute;
+        transition: .7s;
+        top: 0;
+        bottom: 0;
+        right: 100%;
+        left: 0;
+        background: rgb(255, 255, 255);
+        will-change: right;
+    }
+        .effects-button:hover .searchButton{
+            color: rgb(0, 0, 0);
+            border: 3px solid black;
+        }
+        .searchButton:hover .overlay-searchButton{
+            right: 0;
+        }
+
+
+.footer-home-container{
+    width: 100%;
+    height: 50px;
+    background: orange;
+}

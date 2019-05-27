@@ -1,0 +1,44 @@
+
+/* styles for the background container */
+.background-container{
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    animation: visibilidadAndScroll infinite;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+}
+
+@keyframes visibilidadAndScroll{
+  0%{
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 0;
+  }
+  30%{
+      opacity: 0;
+      visibility: hidden;
+  }
+  40%{
+    opacity: 1;
+    visibility: visible;
+  }
+  75%{
+    opacity: 1;
+    visibility: visible;
+  }
+  80%{
+    visibility: visible;
+    opacity: 1;
+  }
+  95%{
+    opacity: 0;
+    visibility: hidden;
+  }
+  100%{
+    opacity: 0;
+    visibility: hidden;
+    margin-top: -500px;
+  }
+}
+

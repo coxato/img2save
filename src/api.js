@@ -69,15 +69,55 @@ async function pixabayData(keywords,page = 1 , per_page = 10){
   } 
 }
 
+//====================== flickr api =========================
+const apiKeyFlickr = "d8459523ee8b588801bb10887b760fa3";
+//const secretFlickr = "494bc8853d697693";
+// url photo format
+// https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{o-secret}_o.(jpg|gif|png)
+// user profile url format
+// https://www.flickr.com/people/{user-id}/ - profile
+
+const BASE_URL_FLICKR = `https://www.flickr.com/services/rest/?method=flickr.photos.search`;
+
+async function fetchFlickrData(tags, page, per_page){
+    try {
+        let response = await fetch(`${BASE_URL_FLICKR}&api_key=${apiKeyFlickr}&tags=${tags.replace(' ','+')}&per_page=${per_page}&page=${page}&format=json&nojsoncallback=1`);
+        let data = await response.json();
+        if(data.stat === "ok"){
+            let arrayData = data.photos.photo.map( pic => {
+                return {
+                    id: pic.id,
+                    description: pic.title,
+                    user: 'flickr user',
+                    userProfile: `https://www.flickr.com/people/${pic.owner}/`,
+                    fullImage: `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`,
+                    smallImage: `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_z.jpg`,
+                    thisWeb: 'flickr'
+                }
+            })
+            // return the data in a array[json's]
+            return arrayData;
+        }else{
+            throw Error(`bad response ${data.stat} code: ${data.code} message ${data.message}`)
+        }
+    } catch (error) {
+        console.log(error.message + " BAD RESPONSE");
+        return null;
+    }
+}
+
+
 const API = {
     unsplashSearch: (word, page, per_page ) => (
         fetchUnsplashData(word, page, per_page)
     ),
     pixabaySearch: (word, page, per_page ) => (
         pixabayData(word, page, per_page)
+    ),
+    flickrSearch: (word, page, per_page) => (
+        fetchFlickrData(word, page, per_page)
     )
 }
-
 
 
 export default API;

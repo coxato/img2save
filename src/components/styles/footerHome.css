@@ -1,0 +1,47 @@
+.footerHome-container{
+    position: relative;
+    width: 100%;
+}
+
+.footer-content{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footerHome-container:nth-child(2){
+    justify-content: center;
+}
+
+.logo-footer-home{
+    width: 100px;
+    margin-left: 40px;
+}
+
+    .logo-footer-home img{
+        width: 100%;
+    }
+
+.personal-links{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 40px;
+}
+
+    .personal-links img{
+        margin-left: 30px;
+    }
+
+/*nombre del website, que quede bien centrado*/
+.website-name-footer{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

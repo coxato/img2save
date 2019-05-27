@@ -1,0 +1,52 @@
+.navHome-container{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.image-nav-home{
+    margin-left: 40px;
+    width: 120px;
+}
+
+    .image-nav-home img{
+        width: 100%;
+    }
+
+.navHome-container nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links-nav-hero{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+    margin-right: 80px;
+}
+
+    .links-nav-hero p{
+        position: relative;
+        cursor: pointer;
+
+    }
+        .links-nav-hero p::before{
+            content: '';
+            height: 3px;
+            position: absolute;
+            bottom: 0;
+            right: 100%;
+            left: 0;
+            width: 0;
+            transition:  .3s;
+            background: white;
+        }
+
+        .links-nav-hero p:hover::before{
+            width: 100%;
+            right: 0;
+        }
