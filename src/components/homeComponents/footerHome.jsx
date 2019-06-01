@@ -2,8 +2,8 @@ import React from 'react';
 // styles
 import './styles/footerHome.css';
 // images
-import Logo from '../images/logo.png'
-import githubLogo from '../images/github-logo.png';
+import Logo from '../../images/logo.png'
+import githubLogo from '../../images/github-logo.png';
 
 const FooterHome = () => (
     <div className="footerHome-container">

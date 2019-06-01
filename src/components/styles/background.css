@@ -1,0 +1,35 @@
+img {
+    max-width: 100%;
+    display: block;
+  }
+  
+  .masonry-layout {
+    --columns: 1;
+    --gap: 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-gap: var(--gap);
+  }
+
+        .masonry-layout.columns-1 {
+            --columns: 1;
+        }
+        .masonry-layout.columns-2 {
+            --columns: 2;
+        }
+        .masonry-layout.columns-3 {
+            --columns: 3;
+        }
+        .masonry-layout.columns-4 {
+            --columns: 4;
+        }
+        .masonry-layout.columns-5 {
+            --columns: 5;
+        }
+        .masonry-layout.columns-6 {
+            --columns: 6;
+        }
+
+.grid-masonry-item {
+    margin-bottom: 20px;
+    }

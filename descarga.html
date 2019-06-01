@@ -5,144 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <!--<script
-  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-  crossorigin="anonymous"></script>-->
   <style>
-
-    
-  .loader-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    background: #2a3132;
-  }
-
-  #grande{
-    height: 150px;
-    width: 150px;
-    /*background: lightgreen;*/
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 5px solid #f1f1f2;
-    animation: girar .7s infinite cubic-bezier(0.46, 0.79, 0.79, 0.31);
-    will-change: transform;
-  }
-  #mediano{
-    height: 100px;
-    width: 100px;
-    /*background: rgb(144, 153, 238);*/
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 5px solid #375e97;
-    animation: girar 3s infinite cubic-bezier(0.46, 0.79, 0.79, 0.31);
-    will-change: transform;
-  }
-  #pequeno{
-    height: 50px;
-    width: 50px;
-    /*background: rgb(228, 144, 18);*/
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 5px solid #a1d6e2;
-    animation: girar 3s infinite cubic-bezier(0.46, 0.79, 0.79, 0.31);
-    will-change: transform;
-  }
-
-  @keyframes girar{
-    from{
-      transform: rotateZ(0deg);
-    }to{
-      transform: rotateZ(360deg);
+    *{
+      margin: 0;
     }
-  }
+    
+
   </style>
 </head>
 <body>
-  <div class="loader-container">
-    <div id="grande">
-      <div id="mediano">
-        <div id="pequeno"></div>
+
+    <div class="gallery" id="gallery">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1520110594912-8c0c80561889?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=52561e7e725247a89ef35a8a4dd2e7c0&auto=format&fit=crop&w=634&q=80" alt="">
+        </div>
+
+
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519838804353-8f76f7a85588?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=64580d693f91c82feec03cac83e8af08&auto=format&fit=crop&w=1350&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517382738648-6544f2e0d47a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f10eedc57cd3d79310c5b3a92c93a018&auto=format&fit=crop&w=1350&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504703395950-b89145a5425b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d702cb99ca804bffcfa8820c46483264&auto=format&fit=crop&w=651&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1507019403270-cca502add9f8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=456245a5bd2285aab008f61a9c3ba5ed&auto=format&fit=crop&w=634&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1521844951825-11a44040b513?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=29ba5a5b8eff22fe5db121568360ff02&auto=format&fit=crop&w=679&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1514976575739-7902e7066844?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0eecfd4e3243e324ff3a4aa2b21dcbd1&auto=format&fit=crop&w=680&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1492739256640-0b5ec57113f0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ce408ae9491c117102c16bc5465e380&auto=format&fit=crop&w=634&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1486486704382-8ee6f7754a45?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8a5ec5734384e9f089fed88430f27879&auto=format&fit=crop&w=1355&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504853593898-da2df34488ec?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=86851061f4e74069d2a717fce9ddef55&auto=format&fit=crop&w=675&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1508978644997-53cc5bfb8a03?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e4502b9fcc0c0a4b46abdb62568f8cf5&auto=format&fit=crop&w=634&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1495647073092-135157cc8085?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=59e14200bdcd1324ee16366a37b315c0&auto=format&fit=crop&w=634&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-0.3.5&s=fd348f4602485866a3996a1fe67b462b&auto=format&fit=crop&w=633&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1460904577954-8fadb262612c?ixlib=rb-0.3.5&s=5bcb5490cd0e0bc4e23907eea361e98b&auto=format&fit=crop&w=1840&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523896719094-5987f9cd958e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=46cc61154163f9aab58a19c674ec7377&auto=format&fit=crop&w=684&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1520110594912-8c0c80561889?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=52561e7e725247a89ef35a8a4dd2e7c0&auto=format&fit=crop&w=634&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519838804353-8f76f7a85588?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=64580d693f91c82feec03cac83e8af08&auto=format&fit=crop&w=1350&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517382738648-6544f2e0d47a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f10eedc57cd3d79310c5b3a92c93a018&auto=format&fit=crop&w=1350&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504703395950-b89145a5425b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d702cb99ca804bffcfa8820c46483264&auto=format&fit=crop&w=651&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1507019403270-cca502add9f8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=456245a5bd2285aab008f61a9c3ba5ed&auto=format&fit=crop&w=634&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1521844951825-11a44040b513?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=29ba5a5b8eff22fe5db121568360ff02&auto=format&fit=crop&w=679&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1514976575739-7902e7066844?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0eecfd4e3243e324ff3a4aa2b21dcbd1&auto=format&fit=crop&w=680&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1492739256640-0b5ec57113f0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ce408ae9491c117102c16bc5465e380&auto=format&fit=crop&w=634&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1486486704382-8ee6f7754a45?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8a5ec5734384e9f089fed88430f27879&auto=format&fit=crop&w=1355&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504853593898-da2df34488ec?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=86851061f4e74069d2a717fce9ddef55&auto=format&fit=crop&w=675&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1508978644997-53cc5bfb8a03?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e4502b9fcc0c0a4b46abdb62568f8cf5&auto=format&fit=crop&w=634&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1495647073092-135157cc8085?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=59e14200bdcd1324ee16366a37b315c0&auto=format&fit=crop&w=634&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-0.3.5&s=fd348f4602485866a3996a1fe67b462b&auto=format&fit=crop&w=633&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1460904577954-8fadb262612c?ixlib=rb-0.3.5&s=5bcb5490cd0e0bc4e23907eea361e98b&auto=format&fit=crop&w=1840&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523896719094-5987f9cd958e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=46cc61154163f9aab58a19c674ec7377&auto=format&fit=crop&w=684&q=80" alt=""></div>
       </div>
-    </div>
-  </div>
 
 
     <script>
-    /* 
-    $('a[download]').each(function() {
-      var $a = $(this);
-      var fileUrl = $a.attr('href');
-      //console.log('esto es $a con this  ',$a);
-      //console.log('esto es fileurl de $a  ',fileUrl);  
-      $a.attr('href', 'data:application/octet-stream,' + encodeURIComponent(fileUrl));
-      //console.log('esto es la url de $a ya transformada  ', $a.attr('href'))
-  });
-*/
-
-/*
-const pixabayKey = "12520812-7a40d4649cbc40da8e7856f3c";
-const BASE_URL = "https://pixabay.com/api/?key=";
-const container = document.getElementById('container');
-
-async function traerData(keywords,page = 1 , per_page = 10){
-  try {
-    
-    let response = await fetch(`${BASE_URL}${pixabayKey}&q=${encodeURIComponent(keywords)}&page=${page}&per_page=${per_page}`);
-    let json = await response.json();
-    return json;
   
-  } catch (error) {
-    console.log(error)
-  }   
-}
-*/
-/*
-function typeWritter(word, elmt){
-    let cont = 0, isDeleting = false;
-    let time = 800, txt = ''; // txt = texto que se irá copiando de letra en letra
-    let timeOut;
-
-    function write(){
-      // si va borrando, borra palabras
-      if(isDeleting){
-        time = 300;
-        txt = word.substring(0, txt.length - 1);
-      }
-      // si no va borrando, agrega palabras
-      else{
-        txt = word.substring(0, txt.length + 1);
-      }
-      // escribir palabra en el elemento
-      elmt.innerText = txt;
-      // si se completó la palabra
-      if(elmt.innerText === word ){
-        isDeleting = true;
-        time = 3000;
-      }
-      // si ya se borró toda la palabra, limpiar timer
-      if(txt == '') {
-        clearTimeout(timeOut)
-      }
-      // setTimeout, que a diferencia de setInterval si permite jugar con el tiempo
-      timeOut = setTimeout( () => write() , time);
-    }
-    // primer llamado a write(), que luego será recursivo gracias a setTimeout a su interno
-    write();
-
-}
-
-typeWritter('hola', document.getElementById('div') )
-*/
 
     </script>
 

@@ -2,7 +2,7 @@ import React from 'react';
 //styles
 import './styles/navHome.css';
 // images
-import Logo from '../images/logo.png';
+import Logo from '../../images/logo.png';
 
 const NavHome = () => (
     <div className="navHome-container">

@@ -2,8 +2,8 @@ import React from 'react';
 // styles
 import './styles/home.css';
 // components
-import BackgroundHome from '../components/backgroundHome';
-import TitlePage from '../components/titlePage';
+import BackgroundHome from '../components/homeComponents/backgroundHome';
+import TitlePage from '../components/homeComponents/titlePage';
 
 const Home = () => (
     <section className="home-container">

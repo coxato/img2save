@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import API from '../api';
+import API from '../../api';
 // utilities
-import mansory from '../utilities/mansory';
+//import mansory from '../../utilities/mansory';
+import masonry2 from '../../utilities/masonry2';
 // components
-import Background from './background';
+import Background from '../background';
 // styles
 import './styles/backgroundHomeContainer.css';
 
 
 class BackgroundHome extends Component{
-    allFill = false
-
     
     state = {
         loading: true,
@@ -33,40 +32,28 @@ class BackgroundHome extends Component{
         this.fecthData();     
         // setInterval para ir mostrando las fotos
         this.intervalId = setInterval(() => {
-            // si todas las fotos obtuvieron, para no hacer tantos request
-            if(!Object.values(this.state.photos).includes(null)){
-                this.allFill = true;
-                // aumentar index de la palabra a buscar
-                this.setState({
-                    backgroundWordCount:
-                         (this.state.backgroundWordCount + 1) % this.state.words.length
-                        })
-            }
-            // si aún no se tienen aun todas las fotos
-            if(!this.allFill) this.fecthData();
-        }, 15000);
+            this.fecthData();
+        },10000);
     }
 
     // *==*==*==*==*==*==*==*==*==*==* fetch all the necesary data(photos) *==*==*==*==*==*==*==*==*==*==*  
     fecthData = async () => {
-        console.log('hago request!!!!')
         this.setState({loading: true, error: null });
         let results = []; // aqui se guardarán las fotos
-        let arrayUnsplash, arrayPixabay;
+        let arrayPixabay, arrayFlickr;
         let index = this.state.backgroundWordCount;
         let word2search = this.state.words[index];
         // ***** try catch for call the two API's *****
         try {
-            // <<var>> for use out try catch
-            arrayUnsplash = await API.unsplashSearch(word2search,1,8);
-            arrayPixabay = await API.pixabaySearch(word2search,1,10); 
+            arrayPixabay = await API.pixabaySearch(word2search,1,10);
+            arrayFlickr = await API.flickrSearch(word2search,1,10);
         } catch (err) {
             console.log(err)
             this.setState({error: err})
         }
         // comprobar que hayan llegado datos de las 2 API's
-        if(arrayUnsplash) results = results.concat(arrayUnsplash);
         if(arrayPixabay) results = results.concat(arrayPixabay); 
+        if(arrayFlickr) results = results.concat(arrayFlickr);
 
         // llamar a la función que guardará los datos en el state
         this.savePhotoToState(index, word2search,results);
@@ -92,16 +79,24 @@ class BackgroundHome extends Component{
 
     // *==*==*==*==*==*==*==*==*==*==* manipulate the DOM *==*==*==*==*==*==*==*==*==*==*
     componentDidUpdate(){
-        this.timeOut = setTimeout(() => {
-            mansory();
-        },4500);
+        let gridContainer = document.getElementById('gallery');
+        let gridItems = document.querySelectorAll('.grid-masonry-item');
+        if(gridContainer){
+            let gridContainerWith = parseInt(gridContainer.getBoundingClientRect().width);
+            let columns;
+            // definir cantidad de columnas segun el ancho del gridContainer
+            if(gridContainerWith <= 620) columns = 2;
+            else if(gridContainerWith <= 1025) columns = 3;
+            else columns = 4;
+
+            masonry2(gridContainer, gridItems, columns);
+        }
     }
 
     // *==*==*==*==*==*==*==*==*==*==* clean timers *==*==*==*==*==*==*==*==*==*==*
     // limpiar timers
     componentWillUnmount(){
         clearInterval(this.intervalId);
-        clearTimeout(this.timeOut);
 }
 
     // *==*==*==*==*==*==*==*==*==*==* render elements *==*==*==*==*==*==*==*==*==*==*
@@ -112,7 +107,7 @@ class BackgroundHome extends Component{
         let word = index === 0 ? words[words.length - 1] : words[index - 1];
         return(
             <section>
-                <div className="background-container">
+                <div className="background-container" >
                     <Background
                         loading={this.state.loading}
                         error={this.state.error} 
