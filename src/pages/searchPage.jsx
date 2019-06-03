@@ -1,11 +1,12 @@
 import React from 'react';
 
 // components
+import SearchContainer from '../components/searchPageComponents/searchContainer';
 
 const SearchPage = () => (
-    <div>
-        hola
-    </div>
+    <section>
+        <SearchContainer />
+    </section>
 )
 
 export default SearchPage;

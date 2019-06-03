@@ -17,11 +17,11 @@
 
 /******************  font sizes   *********************/
 .font-small{
-    font-size: 18px;
+    font-size: 19px;
 }
 
 .font-normal{
-    font-size: 26px;
+    font-size: 27px;
 }
 
 .font-big{
@@ -48,4 +48,18 @@
 
 .ln-height-small{
     line-height: 40px;
+}
+
+/*****************  text aling center  ******************/
+.center{
+    text-align: center;
+}
+
+/*****************  text decoration  *******************/
+.decoration-none{
+    text-decoration: none;
+}
+
+.decoration-underline{
+    text-decoration: underline;
 }

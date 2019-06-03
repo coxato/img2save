@@ -73,19 +73,18 @@
     .overlay-searchButton{
         position: absolute;
         transition: .7s;
-        top: 0;
-        bottom: 0;
-        right: 100%;
-        left: 0;
+        height: 100%;
+        width: 100%;
         background: rgb(255, 255, 255);
-        will-change: right;
+        will-change: transform;
+        transform: translateX(-100%);
     }
         .effects-button:hover .searchButton{
             color: rgb(0, 0, 0);
             border: 3px solid black;
         }
         .searchButton:hover .overlay-searchButton{
-            right: 0;
+            transform: translateX(0);
         }
 
 

@@ -1,0 +1,19 @@
+.categories-container{
+    padding: 5px 0;
+}
+
+.categories-parrafos{
+    display: flex;
+    align-items: center;
+}
+
+.categories-parrafos p{
+    margin-left: 23px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1000px){
+    .categories-parrafos{
+        justify-content: center;
+    }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-//import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 // components
 import NavHome from './navHome';
 import FooterHome from './footerHome';
@@ -15,10 +15,12 @@ const TitlePage = () => (
             <h1 className="family-helvetica font-large ln-height-normal">find your perfect wallpaper</h1>
             <h1 className="family-courier font-big">are you looking for <span id="spanText"></span><span id="lineEditor">|</span>?</h1>
             <div className="effects-button">
-                <div className="searchButton font-normal ln-height-small">
-                    <p>start looking</p>    
-                    <div className="overlay-searchButton"></div>
-                </div>
+            <Link to="/search" className="decoration-none">
+                    <div className="searchButton font-normal ln-height-small">
+                        <p className="decoration-none">start looking</p>    
+                        <div className="overlay-searchButton"></div>
+                    </div>
+            </Link>
             </div>
         </div>
 

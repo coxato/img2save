@@ -7,13 +7,16 @@ import './styles/searchInput.css';
 const SearchInput = props => {
     return(
         <div className="searchInput-container">
-            <input 
-                type="text" 
-                className="inputSearch-input"
-                placeholder="search your image"
-                onKeyDown={props.searchByInput}
-                />
-            <div className="lupa-container">
+            <div>
+                <input 
+                    type="text" 
+                    className="inputSearch-input"
+                    placeholder="search your image"
+                    onKeyUp={props.onSearch}
+                    id='inputSearch'
+                    />
+            </div>
+            <div className="lupa-container" onClick={props.clickSearch}>
                 <img src={Lupa} alt="buscar imagen"/>
             </div>
         </div>

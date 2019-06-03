@@ -1,0 +1,38 @@
+.searchInput-container{
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid rgb(20, 20, 20);
+    border-radius: 9px;
+    background: #fcfcfc;
+}
+
+
+.searchInput-container input{
+    height: 100%;
+    width: 100%;
+    font-size: 24px;
+    margin-left: 18px;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.lupa-container{
+    width: 40px;
+    padding: 10px;
+    cursor: pointer;
+    background: rgb(211, 211, 211);
+}
+
+.lupa-container img{
+    width: 100%;
+}
+
+@media screen and (min-width: 550px){
+    .searchInput-container{
+        height: 35px;
+    }
+}

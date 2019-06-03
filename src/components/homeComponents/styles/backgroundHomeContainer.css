@@ -5,9 +5,9 @@
     visibility: hidden;
     opacity: 0;
     animation: visibilidadAndScroll infinite;
-    animation-duration: 10s;
+    animation-duration: 15s;
     animation-timing-function: linear;
-    will-change: margin;
+    will-change: transform;
 }
 
 @keyframes visibilidadAndScroll{
@@ -39,6 +39,6 @@
   100%{
     opacity: 0;
     visibility: hidden;
-    margin-top: -500px;
+    transform: translateY(-550px);
   }
 }

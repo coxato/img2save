@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import API from '../../api';
+//import API from '../../api/api';
+import fetchPics from '../../api/fetchData'; 
 // utilities
-//import mansory from '../../utilities/mansory';
 import masonry2 from '../../utilities/masonry2';
+import typeWritter from '../../utilities/typewritter';
 // components
 import Background from '../background';
 // styles
@@ -28,38 +29,33 @@ class BackgroundHome extends Component{
 
     // *==*==*==*==*==*==*==*==*==*==* setInterval from the background Home *==*==*==*==*==*==*==*==*==*==*
     componentDidMount(){ 
+         // activate the tipeWriter for the TitlePage component
+        typeWritter(
+            ['landscapes','pets','space','cars','vintage','cities'],
+            document.getElementById('spanText')
+        )
         // primer llamado que se realiza solo una vez antes del setInterval 
         this.fecthData();     
         // setInterval para ir mostrando las fotos
         this.intervalId = setInterval(() => {
             this.fecthData();
-        },10000);
+        },15000);
     }
 
     // *==*==*==*==*==*==*==*==*==*==* fetch all the necesary data(photos) *==*==*==*==*==*==*==*==*==*==*  
     fecthData = async () => {
         this.setState({loading: true, error: null });
-        let results = []; // aqui se guardarán las fotos
-        let arrayPixabay, arrayFlickr;
         let index = this.state.backgroundWordCount;
         let word2search = this.state.words[index];
-        // ***** try catch for call the two API's *****
         try {
-            arrayPixabay = await API.pixabaySearch(word2search,1,10);
-            arrayFlickr = await API.flickrSearch(word2search,1,10);
-        } catch (err) {
-            console.log(err)
-            this.setState({error: err})
+            let pics = await fetchPics(word2search,1,7);
+            // llamar a la función que guardará los datos en el state
+            this.savePhotoToState(index, word2search, pics);
+        } catch (error) {
+            this.setState({error: error});
         }
-        // comprobar que hayan llegado datos de las 2 API's
-        if(arrayPixabay) results = results.concat(arrayPixabay); 
-        if(arrayFlickr) results = results.concat(arrayFlickr);
-
-        // llamar a la función que guardará los datos en el state
-        this.savePhotoToState(index, word2search,results);
 
     }
-
     // *==*==*==*==*==*==*==*==*==*==*  save the data in state *==*==*==*==*==*==*==*==*==*==*
     // metodo para manejar los datos que hayan llegado y guardarlos en el state
     savePhotoToState = ( index, word , results ) => {
@@ -111,7 +107,7 @@ class BackgroundHome extends Component{
                     <Background
                         loading={this.state.loading}
                         error={this.state.error} 
-                        fotos={this.state.photos[word]}
+                        photos={this.state.photos[word]}
                     />
                 </div>
             </section>

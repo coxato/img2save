@@ -1,11 +1,22 @@
+.fotos-vacio{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 img {
     max-width: 100%;
     display: block;
   }
   
+
   .masonry-layout {
     --columns: 1;
     --gap: 1.2rem;
+    padding: 40px;
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
     grid-gap: var(--gap);
@@ -33,3 +44,10 @@ img {
 .grid-masonry-item {
     margin-bottom: 20px;
     }
+/*
+@media screen and (max-width: 550px){
+    .masonry-layout{
+        padding: 20px 0 0 0;
+    }
+}
+*/

@@ -31,14 +31,13 @@ function resizeItem(item, gridAutoRowsHeigt, gridGapHeigt){
 
 function getAllGridItems(){
     let gridContainer = document.querySelector('#gallery');
-    if(!gridContainer) {
-        return console.log('aun no ')
+    if(gridContainer) {
+        let gridContainerStyles = window.getComputedStyle(gridContainer),
+        gridAutoRowsHeigt = parseInt( gridContainerStyles.gridAutoRows ),
+        gridGapHeigt = parseInt( gridContainerStyles.gridRowGap );
+        let items = gridContainer.querySelectorAll('.grid-masonry-item');
+        items.forEach( elmt => resizeItem(elmt, gridAutoRowsHeigt, gridGapHeigt) );
     };
-    let gridContainerStyles = window.getComputedStyle(gridContainer),
-    gridAutoRowsHeigt = parseInt( gridContainerStyles.gridAutoRows ),
-    gridGapHeigt = parseInt( gridContainerStyles.gridRowGap );
-    let items = gridContainer.querySelectorAll('.grid-masonry-item');
-    items.forEach( elmt => resizeItem(elmt, gridAutoRowsHeigt, gridGapHeigt) );
 }
 
 export default getAllGridItems;
