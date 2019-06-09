@@ -1,26 +1,31 @@
 import React from 'react';
-
 // style
-import './styles/imageContainer.css';
+import './styles/imageContainer.css'; 
+// images
+import downloadIcon from '../images/logo-descarga.png';
+
 
 const ImageContainer = props => {
-    let { urlFull , urlSmall ,userFullName,userProfile, description, thisWeb } = props;
+    let { urlFull , urlSmall ,userFullName,userProfile, description, thisWeb, isNightMode, modalShow } = props;
     return(
         <div className="image-container">
             <img src={urlSmall} alt={description}/>
 
-            <div className="overlay-image">
-                <div className="button-download" onClick={() => alert(urlFull)}>download</div>
+            <div className="overlay-image" onClick={(e) => modalShow(e, urlSmall, urlFull, userFullName, userProfile, description, thisWeb)}>
+                
+                <div className={`btn button-download ${isNightMode ? 'day' : 'night'}`}  title="download" onClick={() => alert(urlFull)}>
+                    <img src={downloadIcon} alt="download image2save"/>
+                </div>
+
                 <div className="credits">
-                    <p> photo by 
-                        <a href={userProfile}  >{userFullName} </a>
-                        on <a 
-                            href={`https://${thisWeb}.com`} 
-                            target="_blank"
-                            rel="noopener noreferrer">
-                                {thisWeb}
-                            </a>
-                         </p>
+                    <div>
+                        <p> photo by 
+                            <a href={userProfile}> {userFullName} </a>
+                        </p>
+                        <p> on 
+                            <a  href={`https://${thisWeb}.com`} target="_blank"rel="noopener noreferrer"> {thisWeb}</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 .categories-container{
-    padding: 5px 0;
+    padding: 0 0;
 }
 
 .categories-parrafos{
@@ -10,6 +10,7 @@
 .categories-parrafos p{
     margin-left: 23px;
     cursor: pointer;
+    padding: 5px 0;
 }
 
 @media screen and (min-width: 1000px){

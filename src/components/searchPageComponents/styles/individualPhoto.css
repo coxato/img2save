@@ -1,0 +1,45 @@
+.individualPhoto-container{
+    padding: 10px;
+    position: relative;
+}
+
+.individualPhoto-container img{
+    width: 100%;
+}
+
+.overlay-image-modal{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    z-index: 400;
+}
+
+/* descripcion, boton para descargar y creditos de la foto  */
+.description-modal{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 200px;
+    height: 16px;
+    overflow: hidden;
+    color: white;
+    background: #3a3a3a94;
+    border-radius: 10px;
+    font-family: monospace;
+}
+
+.overlay-image-modal .button-download.day{
+    background: #b024ef;
+}
+.overlay-image-modal .button-download.day:hover{
+    background: #670e90;
+}
+
+.overlay-image-modal .button-download.night{
+    background: #17c7eb;
+}
+.overlay-image-modal .button-download.night:hover{
+    background: #098faa;
+}

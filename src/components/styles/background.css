@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 1;
 }
 
 img {
@@ -13,10 +14,13 @@ img {
   }
   
 
+.gallery{
+    padding: 40px;
+}
+
   .masonry-layout {
     --columns: 1;
     --gap: 1.2rem;
-    padding: 40px;
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
     grid-gap: var(--gap);

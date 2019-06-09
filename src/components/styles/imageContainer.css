@@ -15,6 +15,10 @@
     transition: .3s;
     visibility: hidden;
     opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
         .image-container:hover .overlay-image{
@@ -23,9 +27,57 @@
         }
 
 .credits{
-    color: rgb(230, 230, 230);
+    z-index: 200;
     width: 100%;
-    text-align: center;
     position: absolute;
     bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.credits div{
+    background: #f1f1f2;
+    border-radius: 5px;
+    padding: 4px 12px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.credits a{
+    text-decoration: none;
+    color: rgb(95, 95, 95);
+    transition: .3s;
+}
+
+    .credits a:hover{
+        text-decoration: underline;
+        color: rgb(56, 0, 56);
+    }
+
+.button-download{
+    z-index: 200;
+    width: 40px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: .3s;
+}
+
+        .button-download.day{
+            background: #b024ef;
+        }
+        .button-download.day:hover{
+            background: #670e90;
+        }
+
+        .button-download.night{
+            background: #17c7eb;
+        }
+        .button-download.night:hover{
+            background: #098faa;
+        }
+
+.button-download img{
+    width: 100%;
 }

@@ -1,0 +1,32 @@
+.footer-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.arriba-footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo-footer{
+    width: 100px;
+}
+
+.abajo-footer{
+    width: 100%;
+}
+
+.personal-links-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.personal-links-footer img{
+    width: 30px;
+    margin-left: 35px;
+}

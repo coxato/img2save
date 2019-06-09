@@ -6,8 +6,7 @@
     justify-content: space-around;
     align-items: center;
     position: fixed;
-    z-index: 100;
-    background: orange;
+    z-index: 300;
 }
 
 .navSearch-container .image-container{

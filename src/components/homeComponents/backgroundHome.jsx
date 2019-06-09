@@ -108,6 +108,8 @@ class BackgroundHome extends Component{
                         loading={this.state.loading}
                         error={this.state.error} 
                         photos={this.state.photos[word]}
+                        isNightMode={true}
+                        homePagePadding={true}
                     />
                 </div>
             </section>

@@ -1,0 +1,72 @@
+.modal-container{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: rgba(0, 0, 0, 0.651);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+
+}
+
+.flex-container-modal{
+    margin-top: 5px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation-name: estirar;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    will-change: transform;
+}
+
+
+.close-modal{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+}
+
+    .close-modal p{
+        padding: 5px 5px;
+        background: red;
+        width: 50px;
+        cursor: pointer;
+    }
+
+    .close-modal p:hover{
+        background: rgb(192, 0, 0);
+    }
+
+.modal-content{
+    background: rgba(255, 255, 255, 0.657);
+    border-radius: 0px 12px 12px 12px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/**********************  animación  *********************/
+
+@keyframes estirar{
+    from{
+        opacity: 0;
+        visibility: hidden;
+    }to{
+        transform: scale(1.1);
+        opacity: 1;
+        visibility: visible;
+    }
+}

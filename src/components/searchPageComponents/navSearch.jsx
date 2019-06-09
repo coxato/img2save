@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // components
 import SearchInput from './searchInput';
+import SwitchCheckbox from '../switchCheckbox';
 // logos images
 import LogoWhite from '../../images/logo.png';
 import LogoBlack from '../../images/logo-negro.png';
@@ -28,8 +29,8 @@ const NavSearch = props => {
                 />
             </div>
 
-            <div className="linksAndMode-container" onClick={changeMode}>
-                modo-nocturno
+            <div className="linksAndMode-container">
+                <SwitchCheckbox changeMode={changeMode}/>
             </div>
         </nav>
     )

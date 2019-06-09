@@ -2,6 +2,7 @@ import React from 'react';
 // components
 import Loader from './loader';
 import ImageContainer from './imageContainer';
+import Pagination from './searchPageComponents/pagination';
 // styles
 //import './styles/backgroundHome.css'
 import './styles/background.css';
@@ -11,8 +12,9 @@ import './styles/background.css';
 //class Background extends React.Component{
 const Background = props => {
 
-        let { loading , error , photos, isNightMode } = props;
+        let { loading , error , photos, isNightMode, modalShow } = props;
         let backgroundColor = isNightMode ? '#2a3132' : '#ffffff';
+        let NoPadding = props.homePagePadding ? '0px' : '40px'; 
         // Loader animation
         if(loading) return <Loader isNightMode={isNightMode} />
         // error message
@@ -27,20 +29,27 @@ const Background = props => {
             )
         }  
         return (
-        <section className="gallery" id="gallery" style={{background: backgroundColor}}>
-            { photos.map( pic => (
-                <div className="grid-masonry-item" key={pic.id.toString()}>
-                    <ImageContainer  
-                        urlFull={pic.fullImage}
-                        urlSmall={pic.smallImage}
-                        userFullName={pic.user}
-                        userProfile={pic.userProfile}
-                        description={pic.description}
-                        thisWeb={pic.thisWeb}
-                    />
+            <section>
+                <div className="gallery" id="gallery" style={{background: backgroundColor, padding: NoPadding}}>
+                    { photos.map( pic => (
+                        <div className="grid-masonry-item" key={pic.id.toString()}>
+                            <ImageContainer  
+                                urlFull={pic.fullImage}
+                                urlSmall={pic.smallImage}
+                                userFullName={pic.user}
+                                userProfile={pic.userProfile}
+                                description={pic.description}
+                                thisWeb={pic.thisWeb}
+                                isNightMode={isNightMode}
+                                modalShow={modalShow}
+                            />
+                        </div>
+                    ))}
                 </div>
-            ))}
-        </section>
+
+                <Pagination {...props.paginationProps} isNightMode={isNightMode}/>
+
+            </section>
         )
 };
 

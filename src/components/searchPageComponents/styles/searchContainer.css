@@ -10,7 +10,6 @@
     width: 100%;
     margin-top: 70px;
     overflow-x: auto;
-    z-index: 90;
 }
 
         .default-categories-search-container::-webkit-scrollbar {
@@ -27,8 +26,8 @@
         }
 
 .background-container-search{
-    width: 100%;
-    position: absolute;
-    top: 100px;
-    bottom: 0;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }

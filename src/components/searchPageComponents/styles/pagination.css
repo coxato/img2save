@@ -1,0 +1,68 @@
+.boxes-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.boxes-page-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid black;
+}
+
+.numberPage-container{
+    padding: 7px 12px;
+    width: 20px;
+    background: #e2e2e2;
+    border-right: 1px solid black;
+    transition: .3s;
+    cursor: pointer;
+    text-align: center;
+
+}
+
+.actualPage.actualNight{
+    background: #b024ef;
+}
+
+.actualPage.actualDay{
+    background: #17c7eb;
+}
+
+        .numberPage-container:hover{
+            background: rgba(44, 44, 44, 0.335);
+        }
+
+/******** previous and next image arrow **********/
+.arrow-image{
+    width: 35px;
+    height: 35px;
+    background: #f1f1f2;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.arrow-image-2{
+    transform: rotate(180deg);
+}
+
+    .arrow-image:hover{
+        background: rgba(255, 255, 255, 0.281);
+    }
+/**************  first page and last page  ***************/
+.boxes-container p{
+    cursor: pointer;
+    color: rgb(151, 151, 151);
+    padding: 0 7px;
+}
+
+    .boxes-container p:hover{
+        color: rgb(80, 156, 255);
+    }
