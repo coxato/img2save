@@ -5,6 +5,8 @@
 
 .individualPhoto-container img{
     width: 100%;
+    margin-top: 15px;
+    margin-right: 15px;
 }
 
 .overlay-image-modal{
@@ -19,8 +21,8 @@
 /* descripcion, boton para descargar y creditos de la foto  */
 .description-modal{
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 15px;
+    left: 15px;
     width: 200px;
     height: 16px;
     overflow: hidden;

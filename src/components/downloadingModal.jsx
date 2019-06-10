@@ -1,5 +1,4 @@
 import React, { Component} from 'react';
-//import { createPortal } from "react-dom";
 // components
 import Loader from './loader';
 // style
