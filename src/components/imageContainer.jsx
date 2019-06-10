@@ -6,14 +6,16 @@ import downloadIcon from '../images/logo-descarga.png';
 
 
 const ImageContainer = props => {
-    let { urlFull , urlSmall ,userFullName,userProfile, description, thisWeb, isNightMode, modalShow } = props;
+    let { urlFull , urlSmall ,userFullName,userProfile, description, thisWeb, isNightMode, modalShow,modalDownloadShow} = props;
     return(
         <div className="image-container">
             <img src={urlSmall} alt={description}/>
 
             <div className="overlay-image" onClick={(e) => modalShow(e, urlSmall, urlFull, userFullName, userProfile, description, thisWeb)}>
                 
-                <div className={`btn button-download ${isNightMode ? 'day' : 'night'}`}  title="download" onClick={() => alert(urlFull)}>
+                <div 
+                    onClick={ev => modalDownloadShow(ev, urlFull, description)}
+                    className={`btn button-download ${isNightMode ? 'day' : 'night'}`}  title="download">
                     <img src={downloadIcon} alt="download image2save"/>
                 </div>
 

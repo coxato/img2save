@@ -15,7 +15,7 @@ function widthImageResize(ev){
 const IndividualPhoto = props => {
 
     let {urlSmall, urlFull, userFullName, userProfile, description, thisWeb} = props.data;
-    let isNightMode = props.isNightMode;
+    let { isNightMode, modalDownloadShow} = props;
     return(
         <div className="individualPhoto-container">
             <img src={urlSmall} alt={description} onLoad={(ev) => widthImageResize(ev)}/>
@@ -24,9 +24,13 @@ const IndividualPhoto = props => {
                 
                 <div className="arriba-image-modal">
                     <div className="description-modal">{description}</div>
-                    <div className={`btn button-download ${isNightMode ? 'day' : 'night'}`}  title="download" onClick={() => alert(urlFull)}>
+                    
+                    <div 
+                        className={`btn button-download ${isNightMode ? 'day' : 'night'}`}  title="download"
+                        onClick={(ev) => modalDownloadShow(ev,urlFull, description)} >
                         <img src={downloadIcon} alt="download image2save"/>
                     </div>
+                
                 </div>
 
                 <div className="credits">

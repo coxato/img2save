@@ -5,7 +5,6 @@ import './styles/pagination.css'
 import Arrow from '../../images/row.svg';
 
 const Pagination = props => {
-    console.log('estas son las props que me llegan ', props)
     let boxes = [];
     let {page, maxPage, nBoxes,  susPage, sumarPage, searchByPage, isNightMode} = props;
     // condicional para no pintar cubiculos de más 
@@ -25,8 +24,8 @@ const Pagination = props => {
     // en caso de que el numero de la página interfiera con
     // el numero de cubiculos a pintar 
     else{
-        let minCubiculo = maxPage - nBoxes + 1;
-        for(let i = minCubiculo; i <= maxPage; i++){
+        let minimoCubiculo = maxPage - nBoxes + 1;
+        for(let i = minimoCubiculo; i <= maxPage; i++){
             boxes.push(
                 <div key={i} 
                      onClick={(ev) => searchByPage(ev, i)}

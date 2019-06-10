@@ -6,6 +6,7 @@ import BackgroundPhotos from '../background';
 import Footer from '../footer';
 import Modal from '../portalModal';
 import IndividualPhoto from './individualPhoto';
+import DownloadingModal from '../downloadingModal';
 // utiities
 import masonry2 from '../../utilities/masonry2';
 // fetchData
@@ -24,18 +25,17 @@ class SearchContainer extends Component{
         page: 1,
         perPage: 10,
         modalIsVisible: false,
-        modalPhotoData: {}
+        modalPhotoData: {},
+        modalDownloadIsVisible: false,
+        modalDownloadData: {}
     }
 
-    // cantidad de cajas con numeros paginadores [1][2][3]...99
+    // cantidad de cajas con numeros de las páginas [1][2][3]...99
     nBoxesPagination = 3;
     // numero maxnimo de paginas
-    maxPage =  10;
-    // establecer variable global que determina si se debe hacer
-    //shuffle de las fotos o no
-    componentDidMount(){ window.doMasonryLayout = false}
+    maxPage =  30;
 
-    // control pagination
+    // ********************************  PAGINACIÓN  ****************************
     susPage = () => { 
         if(this.state.page > 1) { 
             let { word, page, perPage } = this.state;
@@ -54,9 +54,8 @@ class SearchContainer extends Component{
         let { word, perPage } = this.state;
         this.fetchData(word, pageNumber, perPage);
     }
-    // controlar el modal
+    // ********************************  MODAL PARA FOTOS  ********************************
     onModalShow = (e, urlSmall, urlFull, userFullName, userProfile, description, thisWeb) => {
-        window.doMasonryLayout = false;
         if(e.target.className === "overlay-image"){
             this.setState({ modalIsVisible: true, 
                 modalPhotoData: {
@@ -73,22 +72,26 @@ class SearchContainer extends Component{
 
     // cerrar modal
     onModalClose = (e) => {
-        window.doMasonryLayout = false;
         if(e.target.className === 'modal-container' || e.target.className === 'close-button-modal'){
             this.setState({ modalIsVisible: false})
         }
     }
-
-
-
-    // encender y apagar modo nocturno
-    onModeChange = () => {
-        // variable global para que no se vuelva a hacer el masonry layout una vez que ya esté pintada 
-        window.doMasonryLayout = false; 
-        this.setState({isNightMode: !this.state.isNightMode});
+    //*************************** MODAL PARA DESCARGAS ************************* */
+    // controlar modal que muestra el mensaje de descarga
+    onModalDownloadShow = (ev, urlPhoto, description) => {
+        this.setState({
+            modalDownloadIsVisible: true,
+            modalDownloadData: { urlPhoto: urlPhoto, description: description}
+        });
     }
 
+    onModalDownloadClose = () => this.setState({ modalDownloadIsVisible: false});
 
+    // ****************************  ENCENDER Y APAGAR MODO NOCTURNO  *****************
+    // encender y apagar modo nocturno
+    onModeChange = () => this.setState({isNightMode: !this.state.isNightMode});
+
+    // *********************** BUSQUEDAS CON LA BARRA DE BUSQUEDAS  ********************
     // manejar la llamada de datos desde el input de <NavSearch>
     onSearch = ev => {
         if(ev.key === "Enter"){
@@ -96,19 +99,18 @@ class SearchContainer extends Component{
         }
     }
 
-
     // manejar el click del icono buscar y tambien el click de las categorías
     onClickSearh = () => {
         let input = document.getElementById('inputSearch');
         this.fetchData(input.value, 1, 10);  
     }
 
-
+    // ******************** BUSCAR POR CATEGORIAS POR DEFECTO  ********************
     // manejar el click de las categorias opr defecto
     onHandleCategoryClick = (ev) => this.fetchData(ev.target.innerText,1,10);
 
 
-
+    // ************************ TRAER DATOS (FOTOS)  ******************************
     // traer todas las fotos con ayuda de las API's
     fetchData = async (word2search, page, perPage) => {
         window.doMasonryLayout = true;
@@ -116,16 +118,18 @@ class SearchContainer extends Component{
             // intentar traer las fotos
             try{
                 let pics = await fetchPics(word2search, page, perPage );
-             this.setState(
+                this.setState(
                     {photos: pics, loading: false}
-                    )
+                )
+                // no hacer más el masonryLayout una vez las imagenes esten arregladas
+                window.doMasonryLayout = false;
             }catch(err){
                 this.setState({error: err});
             }
         
     }
 
-
+    // ***********************  INTERACTUAR CON EL DOM Y HACER MASONRY LAYOUT   *******************
     // hacer el masonry layout
    componentDidUpdate(){
             if(window.doMasonryLayout){
@@ -144,7 +148,7 @@ class SearchContainer extends Component{
             }
     }
 
-        
+    // *************************  RENDER  ***************************************
     render(){
         let { isNightMode, loading, error, photos } = this.state;
         let propsForPagination = {
@@ -178,6 +182,7 @@ class SearchContainer extends Component{
                         photos={photos}
                         modalShow={this.onModalShow}
                         paginationProps={propsForPagination}
+                        modalDownloadShow={this.onModalDownloadShow}
                     />
                 </div>
 
@@ -185,8 +190,19 @@ class SearchContainer extends Component{
                 <Footer isNightMode={isNightMode} />
                        
                 <Modal modalIsVisible={this.state.modalIsVisible} onModalClose={this.onModalClose}>
-                    <IndividualPhoto isNightMode={isNightMode} data={this.state.modalPhotoData}/>
+                    <IndividualPhoto 
+                        sNightMode={isNightMode} 
+                        data={this.state.modalPhotoData} 
+                        modalDownloadShow={this.onModalDownloadShow}/>
                 </Modal>
+
+                <DownloadingModal 
+                    isVisible={this.state.modalDownloadIsVisible}
+                    closeModal={this.onModalDownloadClose} 
+                    photoData={this.state.modalDownloadData} 
+                    isNightMode={isNightMode}
+                />
+            
             </section>
         )
     }

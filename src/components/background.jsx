@@ -12,7 +12,7 @@ import './styles/background.css';
 //class Background extends React.Component{
 const Background = props => {
 
-        let { loading , error , photos, isNightMode, modalShow } = props;
+        let { loading , error , photos, isNightMode, modalShow, modalDownloadShow } = props;
         let backgroundColor = isNightMode ? '#2a3132' : '#ffffff';
         let NoPadding = props.homePagePadding ? '0px' : '40px'; 
         // Loader animation
@@ -42,6 +42,7 @@ const Background = props => {
                                 thisWeb={pic.thisWeb}
                                 isNightMode={isNightMode}
                                 modalShow={modalShow}
+                                modalDownloadShow={modalDownloadShow}
                             />
                         </div>
                     ))}
