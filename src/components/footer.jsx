@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // styles
 import './styles/footer.css';
 // images
@@ -16,6 +17,7 @@ const Footer = props => {
         <div className="footer-container">
             {/************* parte de arriba en el footer*************/}
             <div className="arriba-footer" style={{ background: backgroundArriba, color: fontColor}}>
+                
                 {/************* arriba y a la izquierda en el footer*************/}
                 <div className="arriba-footer-izquierda">
                     <div className="logo-footer">
@@ -25,20 +27,29 @@ const Footer = props => {
                         <p className="font-small family-verdana">img2save &#169; {new Date().getFullYear()}</p>
                     </div>
                 </div>
+                
                 {/************* arriba y a la derecha en el footer*************/}
                 <div className="arriba-footer-derecha">
-                    <p className="font-small">acerca de este sito</p>
+                    <Link to="/about" className={`decoration-none ${isNightMode ? 'color-white':'color-black'}`}>
+                        <p className="font-small" alt="about img2save">about this website</p>
+                    </Link>
                     <p className="font-small">Logo made with <a href="https://www.designevo.com/en/" target="_blank" rel="noopener noreferrer" title="Free Online Logo Maker">DesignEvo</a></p>
                     <p className="font-small">Icons made by <a href="https://www.flaticon.com/" title="Flaticon">flaticon</a></p>
                 </div>
             </div>
+
+            
+            
             {/************* parte de abajo en el footer*************/}
             <div className="abajo-footer" style={{ background: backgroundAbajo}}>
                 <div className="personal-links-footer">
                     <p className="family-courier color-white font-small">Carlos Martínez</p>
-                    <img src={isNightMode ? githubLogoBlanco : githubLogoNegro} alt="github img2save"/>
+                    <a href="https://github.com/carlosEdua/img2save" target="_blank"rel="noopener noreferrer">
+                        <img src={isNightMode ? githubLogoBlanco : githubLogoNegro} alt="github img2save"/>
+                    </a>
                 </div>
             </div>
+
         </div>
     )
 }

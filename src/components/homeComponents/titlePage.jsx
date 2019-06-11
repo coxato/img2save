@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // components
-import NavHome from './navHome';
-import FooterHome from './footerHome';
+import NavHome from '../simpleNav';
+import FooterHome from '../simpleFooter';
 // style
 import './styles/titlePage.css';
 

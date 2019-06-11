@@ -9,11 +9,11 @@ import IndividualPhoto from './individualPhoto';
 import DownloadingModal from '../downloadingModal';
 // utiities
 import masonry2 from '../../utilities/masonry2';
-// fetchData
+// fetchData 
 import fetchPics from '../../api/fetchData';
 // styles
 import './styles/searchContainer.css';
-
+ 
 class SearchContainer extends Component{
 
     state = {

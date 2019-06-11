@@ -3,10 +3,14 @@
     position: relative;
 }
 
-.individualPhoto-container img{
-    width: 100%;
+
+.individualPhoto-container .button-download{
     margin-top: 15px;
     margin-right: 15px;
+}
+
+.individualPhoto-container img{
+    width: 100%;
 }
 
 .overlay-image-modal{

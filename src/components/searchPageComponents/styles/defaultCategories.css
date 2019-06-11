@@ -5,6 +5,7 @@
 .categories-parrafos{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .categories-parrafos p{
@@ -13,8 +14,8 @@
     padding: 5px 0;
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (max-width: 800px){
     .categories-parrafos{
-        justify-content: center;
+        justify-content: start;
     }
 }

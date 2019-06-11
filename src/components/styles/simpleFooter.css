@@ -31,9 +31,12 @@
     margin-right: 40px;
 }
 
-    .personal-links img{
-        margin-left: 30px;
-    }
+.personal-links img{
+    margin-left: 30px;
+}
+.personal-links a{
+    z-index: 1000;
+}
 
 /*nombre del website, que quede bien centrado*/
 .website-name-footer{

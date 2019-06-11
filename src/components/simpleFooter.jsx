@@ -1,11 +1,11 @@
 import React from 'react';
 // styles
-import './styles/footerHome.css';
+import './styles/simpleFooter.css';
 // images
-import Logo from '../../images/logo.png'
-import githubLogo from '../../images/github-logo.png';
+import Logo from '../images/logo.png'
+import githubLogo from '../images/github-logo.png';
 
-const FooterHome = () => (
+const SimpleFooter = () => (
     <div className="footerHome-container">
         <div className="footer-content">
             <div className="logo-footer-home">
@@ -13,7 +13,9 @@ const FooterHome = () => (
             </div>
             <div className="personal-links">
                 <p className="family-courier color-white font-small">Carlos Martínez</p>
-                <img src={githubLogo} alt="github img2save"/>
+                <a href="https://github.com/carlosEdua/img2save" target="_blank" rel="noopener noreferrer">
+                    <img src={githubLogo} alt="github img2save"/>
+                </a>
             </div>
         </div>
 
@@ -23,4 +25,4 @@ const FooterHome = () => (
     </div>
 )
 
-export default FooterHome;
+export default SimpleFooter;

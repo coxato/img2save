@@ -1,0 +1,19 @@
+.about-nav-links{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+}
+
+.about-nav-links a{
+    transition: .3s;
+}
+.about-nav-links a:hover{
+    opacity: 0.6;
+}
+
+
+@media screen and (max-width: 450px){
+    .about-nav-links a{
+        font-size: 16px;
+    }
+}
