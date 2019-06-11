@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "img2save",
+  "alias": "img2save.now.sh",
   "builds": [
     {
       "src": "package.json",
