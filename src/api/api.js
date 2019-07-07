@@ -17,13 +17,20 @@ async function fetchUnsplashData(word, startPage, per_page){
         // save the photos 
         let arrayData = data.results.map( pic => {
             // standard json for use
+            let { full, regular, small, thumb } = pic.urls;
             return {
                 id: pic.id,
                 description: pic.description || pic.alt_description,
                 user: pic.user.name,
                 userProfile: pic.user.links.html,
-                fullImage: pic.urls.full,
-                smallImage: pic.urls.small,
+                fullImage: full,
+                smallImage: small,
+                dimensions: {
+                    "thumbnail_200px": thumb,
+                    "small_400px": small,
+                    "regular_1080px": regular,
+                    "full_2500px+": full
+                },
                 thisWeb: 'unsplash'
             }
         } )
@@ -48,13 +55,19 @@ async function pixabayData(keywords,page = 1 , per_page = 10){
     let response = await fetch(`${BASE_URL}${pixabayKey}&q=${encodeURIComponent(keywords)}&page=${page}&per_page=${per_page}`);
     let data = await response.json();
     let arrayDataPixabay = data.hits.map( pic => {
+        let { largeImageURL, webformatURL, previewURL } = pic;
         return {
             id: pic.id,
             description: pic.tags.replace(/,/g, ' '),
             user: pic.user,
             userProfile: `https://pixabay.com/users/${pic.user.toLowerCase()}-${pic.user_id}/`,
-            fullImage: pic.largeImageURL,
-            smallImage: pic.webformatURL,
+            fullImage: largeImageURL,
+            smallImage: webformatURL,
+            dimensions: {
+                "thumbnail_150px": previewURL,
+                "small_640px": webformatURL,
+                "regular_1280px": largeImageURL,
+            },
             thisWeb: 'pixabay'
         }
     })
@@ -77,7 +90,7 @@ const apiKeyFlickr = "d8459523ee8b588801bb10887b760fa3";
 // user profile url format
 // https://www.flickr.com/people/{user-id}/ - profile
 
-const BASE_URL_FLICKR = `https://www.flickr.com/services/rest/?method=flickr.photos.search`;
+const BASE_URL_FLICKR = "https://www.flickr.com/services/rest/?method=flickr.photos.search";
 
 async function fetchFlickrData(tags, page, per_page){
     try {
@@ -85,13 +98,21 @@ async function fetchFlickrData(tags, page, per_page){
         let data = await response.json();
         if(data.stat === "ok"){
             let arrayData = data.photos.photo.map( pic => {
+
+                let imgURL = `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}`
+                
                 return {
                     id: pic.id,
                     description: pic.title,
                     user: 'flickr user',
                     userProfile: `https://www.flickr.com/people/${pic.owner}/`,
-                    fullImage: `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`,
-                    smallImage: `https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_z.jpg`,
+                    fullImage: `${imgURL}_b.jpg`,
+                    smallImage: `${imgURL}_z.jpg`,
+                    dimensions: {
+                        "thumbnail_320px": `${imgURL}_n.jpg`,
+                        "small_640px": `${imgURL}_z.jpg`,
+                        "regular_1024px": `${imgURL}_b.jpg`,
+                    },
                     thisWeb: 'flickr'
                 }
             })

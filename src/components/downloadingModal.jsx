@@ -10,9 +10,11 @@ class DownloadingModal extends Component{
 
     componentDidUpdate(){
         let {  urlPhoto ,description } = this.props.photoData;
-        this.descargar(urlPhoto, description, this.props.closeModal);
+        let { closeModalDownloading, closeModal } = this.props;
+        this.descargar(urlPhoto, description, closeModalDownloading, closeModal);
     }
-    descargar = (url, filename, closeModal) => {
+    // la descarga se ejecuta una vez se haga render del modal
+    descargar = (url, filename, closeModalDownloading, closeModal) => {
         if(url){
             let extension = url.match(/(jpg)|(png)|(gif)/g);
             filename =  filename.substring(0,25) + '.' + extension;
@@ -22,7 +24,8 @@ class DownloadingModal extends Component{
                 const deleteElementCallback = () => document.querySelector('.downloading-container').removeChild(downloadModalMessageContainer);
                 saveAs(url,filename, undefined, () =>{
                     deleteElementCallback(); // borrar contenedor de mensaje
-                    closeModal(); // cerrar el modal
+                    closeModalDownloading(); 
+                    closeModal(null, true); // cerrar el modal de la foto
                 })
             }
         }

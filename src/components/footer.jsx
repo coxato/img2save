@@ -34,7 +34,7 @@ const Footer = props => {
                         <p className="font-small" alt="about img2save">about this website</p>
                     </Link>
                     <p className="font-small">Logo made with <a href="https://www.designevo.com/en/" target="_blank" rel="noopener noreferrer" title="Free Online Logo Maker">DesignEvo</a></p>
-                    <p className="font-small">Icons made by <a href="https://www.flaticon.com/" title="Flaticon">flaticon</a></p>
+                    <p className="font-small">Icons made by <a href="https://www.flaticon.com/" title="Flaticon" target="_blank"rel="noopener noreferrer">flaticon</a></p>
                 </div>
             </div>
 

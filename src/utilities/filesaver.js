@@ -13,6 +13,11 @@
 * source  : http://purl.eligrey.com/github/FileSaver.js
 */
 
+// la función <<download>> se ejecuta 2 veces antes de descargar como tal el archivo
+// por eso creo la variable global <<downloadCount>> para que cada vez
+// que se empieze a descargar algo se incremente en 1
+// y cuando sea la segunda vez, es decir, cada 2 veces ó mejor dicho
+// cada que window.downloadCount % 2 == 0  se procede a realizar el callback. 
 window.downloadCount = 1;
 
 //var _global = typeof window === 'object' && window.window === window
@@ -80,7 +85,7 @@ var saveAs = _global.saveAs || (
 
 // Use download attribute first if possible (#193 Lumia mobile)
 : 'download' in HTMLAnchorElement.prototype
-? function saveAs (blob, name, opts, callback) { //********************************* aqui ***************************** */
+? function saveAs (blob, name, opts, callback) { //**** este bloque sirve en chrome, chromium y opera ****/
   return new Promise( (resolve, reject) => {
 
             var URL = _global.URL || _global.webkitURL
@@ -110,7 +115,7 @@ var saveAs = _global.saveAs || (
             setTimeout(function () { click(a) }, 0)
             }
             //=======================================================================
-            //***************  le agregué un callback para poder aviar cuando se descargó ********** */
+            //***************  le agregué un callback para poder avisar cuando se descargó ********** */
             //=======================================================================
             if(window.downloadCount % 2 === 0){
                 resolve(callback())

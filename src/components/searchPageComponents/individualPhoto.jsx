@@ -1,6 +1,6 @@
 import React from 'react';
-// images
-import downloadIcon from '../../images/logo-descarga.png';
+// components
+import DropDownResolutions from './dropDown';
 // style
 import './styles/individualPhoto.css';
 
@@ -14,7 +14,7 @@ function widthImageResize(ev){
 
 const IndividualPhoto = props => {
 
-    let {urlSmall, urlFull, userFullName, userProfile, description, thisWeb} = props.data;
+    let {urlSmall, dimensions, userFullName, userProfile, description, thisWeb} = props.data;
     let { isNightMode, modalDownloadShow} = props;
     return(
         <div className="individualPhoto-container">
@@ -25,18 +25,19 @@ const IndividualPhoto = props => {
                 <div className="arriba-image-modal">
                     <div className="description-modal">{description}</div>
                     
-                    <div 
-                        className={`btn button-download ${isNightMode ? 'day' : 'night'}`}  title="download"
-                        onClick={(ev) => modalDownloadShow(ev,urlFull, description)} >
-                        <img src={downloadIcon} alt="download image2save"/>
-                    </div>
+                    <DropDownResolutions 
+                        isNightMode={isNightMode}
+                        modalDownloadShow={modalDownloadShow}
+                        dimensions={dimensions}
+                        description={description}
+                    />
                 
                 </div>
 
                 <div className="credits">
                     <div>
                         <p> photo by 
-                            <a href={userProfile}> {userFullName} </a>
+                            <a href={userProfile} target="_blank"rel="noopener noreferrer"> {userFullName} </a>
                         </p>
                         <p> on 
                             <a  href={`https://${thisWeb}.com`} target="_blank"rel="noopener noreferrer"> {thisWeb}</a>

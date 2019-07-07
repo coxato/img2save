@@ -43,6 +43,7 @@ const Background = props => {
                                 isNightMode={isNightMode}
                                 modalShow={modalShow}
                                 modalDownloadShow={modalDownloadShow}
+                                dimensions={pic.dimensions}
                             />
                         </div>
                     ))}

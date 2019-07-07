@@ -31,9 +31,9 @@ class SearchContainer extends Component{
     }
 
     // cantidad de cajas con numeros de las páginas [1][2][3]...99
-    nBoxesPagination = 3;
+    nBoxesPagination = 5;
     // numero maxnimo de paginas
-    maxPage =  30;
+    maxPage =  50;
 
     // ********************************  PAGINACIÓN  ****************************
     susPage = () => { 
@@ -55,25 +55,25 @@ class SearchContainer extends Component{
         this.fetchData(word, pageNumber, perPage);
     }
     // ********************************  MODAL PARA FOTOS  ********************************
-    onModalShow = (e, urlSmall, urlFull, userFullName, userProfile, description, thisWeb) => {
-        if(e.target.className === "overlay-image"){
+    onModalShow = (e, photoProps) => {
+        if(e.target.className === "overlay-image" || e.target.className === "img-overlay-download"){
             this.setState({ modalIsVisible: true, 
                 modalPhotoData: {
-                    urlSmall: urlSmall,
-                    urlFull: urlFull,
-                    userFullName: userFullName,
-                    userProfile: userProfile, 
-                    description: description, 
-                    thisWeb: thisWeb
+                    ...photoProps
             }
         });
         }
     }
 
     // cerrar modal
-    onModalClose = (e) => {
-        if(e.target.className === 'modal-container' || e.target.className === 'close-button-modal'){
-            this.setState({ modalIsVisible: false})
+    onModalClose = (e, closeWithCallback = null) => {
+        // cerrar si se terminó la descarga
+        if(closeWithCallback){
+            this.setState({ modalIsVisible: false});
+        }
+        // si se cierra con el boton X de cerrar o dandole click por fuera del container
+        else if( e.target.className === 'modal-container' || e.target.className === 'close-button-modal'){
+            this.setState({ modalIsVisible: false});
         }
     }
     //*************************** MODAL PARA DESCARGAS ************************* */
@@ -95,24 +95,28 @@ class SearchContainer extends Component{
     // manejar la llamada de datos desde el input de <NavSearch>
     onSearch = ev => {
         if(ev.key === "Enter"){
-            this.fetchData(ev.target.value, 1, 10);
+            let value = ev.target.value;
+            ev.target.value = "";
+            this.fetchData(value);
         }
     }
 
     // manejar el click del icono buscar y tambien el click de las categorías
     onClickSearh = () => {
-        let input = document.getElementById('inputSearch');
-        this.fetchData(input.value, 1, 10);  
+        let input = document.getElementById('inputSearch'),
+        value = input.value;
+        input.value = ""; // resetear valor
+        this.fetchData(value);  
     }
 
     // ******************** BUSCAR POR CATEGORIAS POR DEFECTO  ********************
     // manejar el click de las categorias opr defecto
-    onHandleCategoryClick = (ev) => this.fetchData(ev.target.innerText,1,10);
+    onHandleCategoryClick = (ev) => this.fetchData(ev.target.innerText);
 
 
     // ************************ TRAER DATOS (FOTOS)  ******************************
     // traer todas las fotos con ayuda de las API's
-    fetchData = async (word2search, page, perPage) => {
+    fetchData = async (word2search, page = 1, perPage = 30) => {
         window.doMasonryLayout = true;
         this.setState({ loading: true, error: null, page: page, word: word2search});
             // intentar traer las fotos
@@ -191,14 +195,16 @@ class SearchContainer extends Component{
                        
                 <Modal modalIsVisible={this.state.modalIsVisible} onModalClose={this.onModalClose}>
                     <IndividualPhoto 
-                        sNightMode={isNightMode} 
+                        isNightMode={isNightMode} 
                         data={this.state.modalPhotoData} 
-                        modalDownloadShow={this.onModalDownloadShow}/>
+                        modalDownloadShow={this.onModalDownloadShow}
+                    />
                 </Modal>
 
                 <DownloadingModal 
                     isVisible={this.state.modalDownloadIsVisible}
-                    closeModal={this.onModalDownloadClose} 
+                    closeModalDownloading={this.onModalDownloadClose}
+                    closeModal={this.onModalClose} 
                     photoData={this.state.modalDownloadData} 
                     isNightMode={isNightMode}
                 />

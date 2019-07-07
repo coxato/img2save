@@ -9,9 +9,9 @@
     margin-right: 15px;
 }
 
-.individualPhoto-container img{
+/* .individualPhoto-container img{
     width: 100%;
-}
+} */
 
 .overlay-image-modal{
     position: absolute;
@@ -36,16 +36,16 @@
     font-family: monospace;
 }
 
-.overlay-image-modal .button-download.day{
+.day{
     background: #b024ef;
 }
-.overlay-image-modal .button-download.day:hover{
+.day:hover{
     background: #670e90;
 }
 
-.overlay-image-modal .button-download.night{
+.night{
     background: #17c7eb;
 }
-.overlay-image-modal .button-download.night:hover{
+.night:hover{
     background: #098faa;
 }
