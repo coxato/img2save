@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ThemeContext } from '../../contexts/themeColor';
 // components 
 import NavSearch from './navSearch';
 import DefaultCategories from './defaultCategories';
@@ -20,7 +21,6 @@ class SearchContainer extends Component{
         loading: false,
         error: null,
         photos: [],
-        isNightMode: false,
         word: '',
         page: 1,
         perPage: 10,
@@ -87,9 +87,6 @@ class SearchContainer extends Component{
 
     onModalDownloadClose = () => this.setState({ modalDownloadIsVisible: false});
 
-    // ****************************  ENCENDER Y APAGAR MODO NOCTURNO  *****************
-    // encender y apagar modo nocturno
-    onModeChange = () => this.setState({isNightMode: !this.state.isNightMode});
 
     // *********************** BUSQUEDAS CON LA BARRA DE BUSQUEDAS  ********************
     // manejar la llamada de datos desde el input de <NavSearch>
@@ -154,33 +151,29 @@ class SearchContainer extends Component{
 
     // *************************  RENDER  ***************************************
     render(){
-        let { isNightMode, loading, error, photos } = this.state;
+        let { loading, error, photos } = this.state;
         let propsForPagination = {
             sumarPage: this.sumarPage, susPage: this.susPage, page: this.state.page,
             nBoxes: this.nBoxesPagination, searchByPage: this.searchByPage, maxPage: this.maxPage
         }
-        let backgroundColorDefaultContainer = isNightMode ? '#b024ef' : '#17c7eb';
+
         return (
             <section className="search-container">
                 <NavSearch 
-                    isNightMode={isNightMode}
                     onSearch={this.onSearch}
                     clickSearch={this.onClickSearh}
-                    changeMode={this.onModeChange}
                 />
 
                 <div className="default-categories-search-container"  
-                    style={{background: backgroundColorDefaultContainer}}>
+                    style={{background: this.context.theme === 'light' ? '#17c7eb' : '#b024ef'}}>
                     
                     <DefaultCategories 
                         handleCategoryClick={this.onHandleCategoryClick}
-                        isNightMode={isNightMode}    
                     />
                 </div>
 
                 <div className="background-container-search">
                     <BackgroundPhotos 
-                        isNightMode={isNightMode}
                         loading={loading}
                         error={error}
                         photos={photos}
@@ -191,11 +184,11 @@ class SearchContainer extends Component{
                 </div>
 
 
-                <Footer isNightMode={isNightMode} />
+                <Footer />
                        
                 <Modal modalIsVisible={this.state.modalIsVisible} onModalClose={this.onModalClose}>
                     <IndividualPhoto 
-                        isNightMode={isNightMode} 
+                         
                         data={this.state.modalPhotoData} 
                         modalDownloadShow={this.onModalDownloadShow}
                     />
@@ -206,7 +199,7 @@ class SearchContainer extends Component{
                     closeModalDownloading={this.onModalDownloadClose}
                     closeModal={this.onModalClose} 
                     photoData={this.state.modalDownloadData} 
-                    isNightMode={isNightMode}
+                    
                 />
             
             </section>
@@ -214,4 +207,5 @@ class SearchContainer extends Component{
     }
 }
 
+SearchContainer.contextType = ThemeContext;
 export default SearchContainer;

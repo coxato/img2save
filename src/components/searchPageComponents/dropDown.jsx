@@ -1,17 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../contexts/themeColor';
+// utils
+import { downloadImage } from '../../utilities/downloader';
+// images
 import LogoDownload from '../../images/logo-descarga.png';
 import './styles/dropDownDownload.css';
 
+const classTheme = { light: 'noche', dark: 'dia' };
+
 const DropDownDownload = props => {
-    const { isNightMode, dimensions, modalDownloadShow, description } = props;
+    const { theme } = useContext(ThemeContext);
+    const { dimensions, description } = props;
 
     return(
-        <div className={`dropdown-container ${isNightMode ? 'dia' : 'noche'}`}>
+        <div className={`dropdown-container ${classTheme[theme]}`}>
             <div className="img-dropdown-container">
                 <img className="dropdown-img" src={LogoDownload} alt="img2save download"/>
             </div>
-            <select className={`select-resolutions ${isNightMode ? 'dia' : 'noche'}`}  defaultValue="default" onChange={(ev) => modalDownloadShow(ev, ev.target.value, description)}>
-                <option value="default" disabled hidden>select resolution</option>
+
+            <select 
+                onChange={(ev) => download(ev.target.value, description) }
+                className={`select-resolutions ${classTheme[theme]}`}
+                defaultValue="default"
+            > 
+                <option value="default" disabled hidden>select resolutions</option>
                 { showDimensions(dimensions) }
             </select>
         </div>
@@ -30,6 +42,11 @@ function showDimensions(dimensions){
     }
 
     return options;
+}
+
+function download(imageURL, imageName){
+    const extension = imageURL.match(/(jpg)|(png)|(gif)/g);
+    downloadImage(imageURL, imageName, extension);
 }
 
 export default DropDownDownload;

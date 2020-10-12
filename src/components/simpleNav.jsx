@@ -14,8 +14,8 @@ const simpleNav = () => (
             </div>
             </Link>
             <div className="links-nav-hero font-normal color-white family-helvetica">
-            <Link to="/about" className="decoration-none color-white"><p className="decoration-none">about</p></Link>
-             <Link to="/search" className="decoration-none color-white"><p>search</p></Link>
+                <Link to="/about" className="decoration-none color-white"><p className="decoration-none">about</p></Link>
+                <Link to="/search" className="decoration-none color-white"><p>search</p></Link>
             </div>
         </nav>
     </div>

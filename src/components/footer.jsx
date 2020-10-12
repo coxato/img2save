@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../contexts/themeColor';
 // styles
 import './styles/footer.css';
 // images
@@ -8,20 +9,27 @@ import LogoNegro from '../images/logo-negro.png'
 import githubLogoBlanco from '../images/github-logo.png';
 import githubLogoNegro from '../images/logo-negro-github.png';
 
-const Footer = props => {
-    let { isNightMode } = props; 
-    let backgroundArriba = isNightMode ? 'black' : '#f1f1f2';
-    let backgroundAbajo = isNightMode ? '#b024ef' : '#17c7eb';
-    let fontColor = isNightMode ? '#ffffff' : '#000000'; 
+
+const colors = {
+    backgroundArriba: { light: '#f1f1f2', dark: '#000' },
+    backgroundAbajo: { light: '#17c7eb', dark: '#b024ef' },
+    fontColor: { light: '#000', dark: '#fff' },
+    githubLogo: { light: githubLogoNegro, dark: githubLogoBlanco},
+    logo: { light: LogoNegro, dark: LogoBlanco}
+}
+
+const Footer = () => {
+    const { theme } = useContext(ThemeContext);
+
     return(
         <div className="footer-container">
             {/************* parte de arriba en el footer*************/}
-            <div className="arriba-footer" style={{ background: backgroundArriba, color: fontColor}}>
+            <div className="arriba-footer" style={{ background: colors.backgroundArriba[theme], color: colors.fontColor[theme]}}>
                 
                 {/************* arriba y a la izquierda en el footer*************/}
                 <div className="arriba-footer-izquierda">
                     <div className="logo-footer">
-                        <img src={isNightMode ? LogoBlanco : LogoNegro} alt="img2save"/>
+                        <img src={colors.logo[theme]} alt="img2save"/>
                     </div>
                     <div className="website-name">
                         <p className="font-small family-verdana">img2save &#169; {new Date().getFullYear()}</p>
@@ -30,7 +38,7 @@ const Footer = props => {
                 
                 {/************* arriba y a la derecha en el footer*************/}
                 <div className="arriba-footer-derecha">
-                    <Link to="/about" className={`decoration-none ${isNightMode ? 'color-white':'color-black'}`}>
+                    <Link to="/about" className={`decoration-none ${colors.fontColor[theme]}`}>
                         <p className="font-small" alt="about img2save">about this website</p>
                     </Link>
                     <p className="font-small">Logo made with <a href="https://www.designevo.com/en/" target="_blank" rel="noopener noreferrer" title="Free Online Logo Maker">DesignEvo</a></p>
@@ -41,11 +49,11 @@ const Footer = props => {
             
             
             {/************* parte de abajo en el footer*************/}
-            <div className="abajo-footer" style={{ background: backgroundAbajo}}>
+            <div className="abajo-footer" style={{ background: colors.backgroundAbajo[theme]}}>
                 <div className="personal-links-footer">
                     <p className="family-courier color-white font-small">Carlos Martínez</p>
                     <a href="https://github.com/carlosEdua/img2save" target="_blank"rel="noopener noreferrer">
-                        <img src={isNightMode ? githubLogoBlanco : githubLogoNegro} alt="github img2save"/>
+                        <img src={colors.githubLogo[theme]} alt="github img2save"/>
                     </a>
                 </div>
             </div>

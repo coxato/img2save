@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../contexts/themeColor';
 // style
 import './styles/imageContainer.css'; 
 // images
 import downloadIcon from '../images/logo-descarga.png';
 
+const colors = {
+    light: 'night',
+    dark: 'day'
+}
 
 const ImageContainer = props => {
-    let {  urlSmall ,userFullName,userProfile, description, thisWeb, isNightMode, modalShow} = props;
+    const { theme } = useContext(ThemeContext);
+    let {  urlSmall ,userFullName,userProfile, description, thisWeb, modalShow} = props;
+    
     return(
         <div className="image-container">
             <img src={urlSmall} alt={description}/>
@@ -14,7 +21,7 @@ const ImageContainer = props => {
             <div className="overlay-image" onClick={(e) => modalShow(e, props)}>
                 
                 <div 
-                    className={`btn button-download ${isNightMode ? 'day' : 'night'}`}  title="download">
+                    className={`btn button-download ${colors[theme]}`}  title="download">
                     <img className="img-overlay-download" src={downloadIcon} alt="download image2save"/>
                 </div>
 
